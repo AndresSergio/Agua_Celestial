@@ -1,0 +1,120 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="Pedidos.login"
+             BackgroundColor="White"
+             xmlns:gradient ="clr-namespace:Syncfusion.XForms.Graphics;assembly=Syncfusion.Core.XForms" 
+             xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
+             xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
+          
+             xmlns:vm2="clr-namespace:Pedidos.ViewModels">
+    <ContentPage.Content>
+
+        <Grid  HeightRequest="1400">
+            <!--<Image Source="pedidoslogin.jpg" Aspect="AspectFill"/>-->
+            <BoxView Color="#F4F0F0" Opacity="0.5"/>
+            <gradient:SfGradientView>
+                <gradient:SfGradientView.BackgroundBrush>
+                    <gradient:SfLinearGradientBrush StartPoint="0.5, 0" EndPoint="0.5, 1">
+                        <gradient:SfLinearGradientBrush.GradientStops>
+                            <gradient:SfGradientStop Color="#3ccbed" Offset="0.0" />
+                            <gradient:SfGradientStop Color="#ffffff" Offset="0.5" />
+                            <gradient:SfGradientStop Color="#36b729" Offset="1.0" />
+                        </gradient:SfLinearGradientBrush.GradientStops>
+                    </gradient:SfLinearGradientBrush>
+                </gradient:SfGradientView.BackgroundBrush>
+            </gradient:SfGradientView>
+
+
+            <Grid >
+                <!--<Grid.BindingContext>
+                            <vm2:RaizViewModel></vm2:RaizViewModel>
+                        </Grid.BindingContext>-->
+
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <StackLayout    Margin="100,50,100,5" >
+                    <Image Grid.Row="0" Source="Login.png"  WidthRequest="250" HeightRequest="250"/>
+                </StackLayout>
+
+                <StackLayout  Grid.Row="1" Padding="30,30" Margin="0,40" >
+                    <!--<Entry  Placeholder="Email" PlaceholderColor="White" Margin="0,30"/>
+                            <Entry  Placeholder="Password" PlaceholderColor="White" IsPassword="True"/>
+                            <Button  Text="Iniciar sesión" BackgroundColor="White" CornerRadius="25" TextColor="#6ACADF" Margin="0,40" Clicked="Button_Clicked"/>-->
+                    <!--<Frame CornerRadius="5" BackgroundColor="White" Margin="0,0,0,0" Padding="0,0,0,0">
+                                <Entry Placeholder="Email"/>
+                            </Frame>
+                            <Frame CornerRadius="5" Margin="0,0,0,0" Padding="0,0,0,0">
+                                <Entry Placeholder="Password" IsPassword="True" FontSize="Small" ></Entry>
+                            </Frame>-->
+                    <inputLayout:SfTextInputLayout
+                                ReserveSpaceForAssistiveLabels="False"
+                                Hint="Numero Telefonico"
+                                ContainerType="Outlined"
+                                OutlineCornerRadius="8"
+                        
+                                UnfocusedColor="#2A8EA5"
+                                FocusedColor="#25801C"
+                        
+                        
+                                 >
+                        <Entry  Keyboard="Telephone"
+                                        x:Name="telefono"
+                                        TextColor="Black"
+                                
+                                
+                                        />
+                    </inputLayout:SfTextInputLayout>
+                    <!--<inputLayout:SfTextInputLayout
+                       
+                                ReserveSpaceForAssistiveLabels="False"
+                                EnablePasswordVisibilityToggle="True"
+                                Hint="Contraseña"
+                                ContainerType="Outlined"
+                                ContainerBackgroundColor="Transparent"
+                                OutlineCornerRadius="8"
+                                UnfocusedColor="White"
+                                 >
+                        <Entry IsPassword="True" 
+                                       x:Name="Password"
+                                       TextColor="White"/>
+                    </inputLayout:SfTextInputLayout>-->
+
+
+                    <StackLayout HorizontalOptions="FillAndExpand"    >
+
+                        <Button Text="Ingresar"  HorizontalOptions="FillAndExpand" BorderColor="Transparent" BorderWidth="2" BackgroundColor= "#24798E" TextColor="White" CornerRadius="25" Margin="0,20,0,0" Clicked="Button_Clicked"/>
+                        <Button Text="Registrarse"  HorizontalOptions="FillAndExpand" BorderColor="Transparent" BorderWidth="2" BackgroundColor= "#24798E" TextColor="White" CornerRadius="25" Margin="0,20,0,0" Clicked="Button_Clicked_1"/>
+
+
+                        <!--<Button Text="Registrarse" HorizontalOptions="FillAndExpand" BorderColor="#150792"  BackgroundColor= "White" TextColor="#DF0101" CornerRadius="25" Margin="0,20,40,0" Clicked="Button_Clicked_1"/>-->
+
+                    </StackLayout>
+
+
+                </StackLayout>
+                <Grid Opacity=".8" 
+                      
+                                BackgroundColor="Black"
+                                Grid.RowSpan="3"
+                                IsVisible="{Binding IsBusy}">
+                    <ActivityIndicator
+                                IsRunning="{Binding IsBusy}"
+                                HorizontalOptions="Center"
+                                >
+
+                    </ActivityIndicator>
+                </Grid>
+
+            </Grid>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

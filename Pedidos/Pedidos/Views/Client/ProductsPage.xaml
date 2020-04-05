@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:autocomplete="clr-namespace:Syncfusion.SfAutoComplete.XForms;assembly=Syncfusion.SfAutoComplete.XForms"
+             xmlns:behaviorsPack="clr-namespace:Xamarin.Forms.BehaviorsPack;assembly=Xamarin.Forms.BehaviorsPack"
+             mc:Ignorable="d"
+             x:Class="Pedidos.Views.Client.ProductsPage">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="8*"/>
+            <RowDefinition Height="1*"/>
+
+        </Grid.RowDefinitions>
+        <StackLayout>
+            <!--<SearchBar
+                Placeholder="Busca tu producto"
+                x:Name="search"
+                SearchCommand="{Binding SearchCommand}"
+                SearchCommandParameter="{Binding Text,Source={x:Reference search}}"></SearchBar>-->
+            <Frame CornerRadius="45"  HasShadow="True" Margin="5,5" Padding="0,0">
+            <autocomplete:SfAutoComplete HeightRequest="40" 
+                                         
+                                         DataSource="{Binding Proveedors}"
+                                         DisplayMemberPath="nombre_prov"
+                                         Watermark="Busca tu Producto!!">
+
+                <autocomplete:SfAutoComplete.Behaviors>
+                    <behaviorsPack:EventToCommandBehavior 
+                                                          EventName="SelectionChanged"
+                                                          Command="{Binding SearchCommand}"
+                                                          EventArgsPropertyPath="Value"/>
+                </autocomplete:SfAutoComplete.Behaviors>
+
+            </autocomplete:SfAutoComplete>
+            </Frame>
+            <ListView
+                ItemsSource="{Binding Oneproveedor}"
+                RowHeight="150">
+                <ListView.Behaviors>
+                    <behaviorsPack:EventToCommandBehavior
+                    Command="{Binding SelectedItemCommand}"
+                    EventName="ItemTapped"
+                    EventArgsPropertyPath="Item"></behaviorsPack:EventToCommandBehavior>
+                </ListView.Behaviors>
+
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell Appearing="ViewCell_Appearing">
+                            <Frame CornerRadius="5"
+                                   Margin="5"
+                                   BackgroundColor="White">
+                                <StackLayout Orientation="Horizontal">
+                                    <StackLayout Orientation="Vertical">
+                                        <Label Text="{Binding nombre_prov }"></Label>
+                                        <Label Text="{Binding concepto_prov }"></Label>
+                                        <Label Text="{Binding monto_total_prov}"></Label>
+                                        <Label Text="{Binding estado_prov}"></Label>
+                                    </StackLayout>
+                                    <!--<StackLayout Orientation="Horizontal">
+                                        <Button Text="ver"></Button>
+                                        <Button Text="pagar"></Button>
+                                        <Button Text="eliminar"></Button>
+                                    </StackLayout>-->
+
+                                </StackLayout>
+
+                            </Frame>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+
+            </ListView>
+        </StackLayout>
+        <Grid Opacity=".8" 
+                      
+                        BackgroundColor="Black"
+                        Grid.RowSpan="2"
+                        IsVisible="{Binding indicador}">
+            <ActivityIndicator
+                        IsRunning="True"
+                        HorizontalOptions="Center"
+                        >
+
+            </ActivityIndicator>
+        </Grid>
+    </Grid>
+</ContentPage>

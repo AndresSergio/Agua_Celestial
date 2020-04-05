@@ -1,0 +1,155 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Shell xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:view="clr-namespace:Pedidos.Views"
+             xmlns:viewClient="clr-namespace:Pedidos.Views.Client"
+             xmlns:viewProduct="clr-namespace:Pedidos.Views.Productos"
+             xmlns:Ventas="clr-namespace:Pedidos.Views.Ventas"
+             xmlns:viewDirec="clr-namespace:Pedidos.Views.Direcciones"
+             mc:Ignorable="d"
+             x:Class="Pedidos.ContentShell"
+             BackgroundColor="#005AA9"
+             TitleColor="White"
+             ForegroundColor="White"
+             UnselectedColor="#95FFFFFF"
+             >
+
+    <Shell.FlyoutHeaderTemplate>
+        <DataTemplate >
+            <view:FlyoutHeaderxaml/>
+        </DataTemplate>
+    </Shell.FlyoutHeaderTemplate>
+
+    <Shell.ItemTemplate>
+        <DataTemplate>
+            <Grid >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.2*"/>
+                    <ColumnDefinition Width="0.8*"/>
+                </Grid.ColumnDefinitions>
+                <Image Source="{Binding FlyoutIcon}"
+                       Margin="5"
+                       HeightRequest="45"/>
+                <Label Grid.Column="1"
+                       Text="{Binding Title}"
+                       FontAttributes="Italic"
+                       VerticalTextAlignment="Center"
+                       FontSize="Medium"/>
+
+            </Grid>
+        </DataTemplate>
+    </Shell.ItemTemplate>
+    
+    
+    <FlyoutItem Title="Ventas"
+                Icon="paginaprincipal.png">
+        <Tab  Title="cliente" >
+            <ShellContent Title="producto de venta del mes">
+               <viewClient:ProductsPage/>
+            </ShellContent>
+            <ShellContent Title="venta del mes">
+                <view:ItemsPage/>
+            </ShellContent>
+            
+        </Tab>
+        <Tab Title="Clientes">
+            <ShellContent>
+                <view:ItemsPage/>
+            </ShellContent>
+        </Tab>
+        <Tab Title="Bodega Actual">
+            <ShellContent>
+                <view:ItemsPage/>
+            </ShellContent>
+        </Tab>
+        <Tab Title="Listado de Ventas">
+            <ShellContent>
+                <view:ItemsPage/>
+            </ShellContent>
+        </Tab>
+        <Tab Title="Reportes">
+            <ShellContent>
+                <view:ItemsPage/>
+            </ShellContent>
+        </Tab>
+
+    </FlyoutItem>
+    <FlyoutItem Title="Productos"
+                Icon="bolsacompra.png">
+        <Tab Title="cliente">
+            <ShellContent>
+                <viewProduct:LoadMore/>
+            </ShellContent>
+        </Tab>
+        <Tab Title="producto">
+            <ShellContent>
+                <view:ItemsPage/>
+            </ShellContent>
+        </Tab>
+
+    </FlyoutItem>
+    <FlyoutItem Title="Ventas"
+                Icon="historialpedidos.png"
+                Route="ventas">
+
+        <Tab Title="Productos"
+             Icon="bolsacompra.png"
+             Route="productos">
+            <ShellContent Route="ProductSelect">
+                <Ventas:ProductSelectPage/>
+            </ShellContent>
+        </Tab>
+       
+    </FlyoutItem>
+    <FlyoutItem Title="Mi Cuenta"
+                Icon="ajustesusuario.png">
+        <Tab Title="3ra">
+            <ShellContent>
+                <view:ItemsPage/>
+
+            </ShellContent>
+
+        </Tab>
+        
+    </FlyoutItem>
+    <FlyoutItem Title="Direcciones"
+                Icon="promociones.png"
+                Route="rutas">
+       
+        <Tab Title="Mapa"
+             Icon="bolsacompra.png"
+             Route="mapa">
+            <ShellContent Route="MapaSelect">
+                <viewDirec:DireccionesMapaPage/>
+
+            </ShellContent>
+
+        </Tab>
+        
+    </FlyoutItem>
+    <FlyoutItem Title="Clientes"
+                Icon="promociones.png">
+
+        <Tab Title="Registro de Clientes"
+             Icon="bolsacompra.png"
+             Route="productos">
+            <ShellContent Route="ProductSelect">
+                <viewClient:RegisterPage/>
+            </ShellContent>
+        </Tab>
+
+    </FlyoutItem>
+    <FlyoutItem Title="Notificaciones"
+                Icon="promociones.png">
+        <Tab >
+            <ShellContent
+                ContentTemplate="{d:DataTemplate view:NotificationsPage}"
+
+            />
+        </Tab>
+
+    </FlyoutItem>
+
+</Shell>

@@ -1,0 +1,129 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             BackgroundColor="White"
+             x:Class="Pedidos.Views.Client.RegisterPage"
+             xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
+             >
+    <ContentPage.Content>
+        <ScrollView>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="2*"/>
+                    <RowDefinition Height="8*"/>
+
+
+                </Grid.RowDefinitions>
+                <!--<Grid.ColumnDefinitions>
+                    <ColumnDefinition/>  Para agregar iconos
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>-->
+
+                <!--<Maps:Map x:Name="MyMap" MapType="Street" Grid.Row="0" Grid.RowSpan="2"/>-->
+
+
+                <Frame    Margin="0,10,0,0" Padding="0,0,0,0" Grid.Row="0">
+                    <Image Grid.Row="0" Source="LogoSplashScreencircle.png"  WidthRequest="0" HeightRequest="40" />
+                </Frame>
+
+                <StackLayout VerticalOptions="Fill" Margin="0,5" Padding="40, 0" Grid.Row="1">
+                    <inputLayout:SfTextInputLayout
+                            ReserveSpaceForAssistiveLabels="False"
+                            Hint="Nombre"
+                            ContainerType="Outlined"
+                            OutlineCornerRadius="8"
+                             >
+                        <Entry x:Name="nombre" />
+                    </inputLayout:SfTextInputLayout>
+                    <!--<inputLayout:SfTextInputLayout
+                            ReserveSpaceForAssistiveLabels="False"
+                            Hint="Apellidos"
+                            ContainerType="Outlined"
+                            OutlineCornerRadius="8"
+                             >
+                            <Entry x:Name="apellidos" />
+                        </inputLayout:SfTextInputLayout>-->
+                    <inputLayout:SfTextInputLayout
+                            ReserveSpaceForAssistiveLabels="False"
+                            Hint="Razon del Cliente"
+                            ContainerType="Outlined"
+                            OutlineCornerRadius="8"
+                             >
+                        <Entry  x:Name="ci" />
+                    </inputLayout:SfTextInputLayout>
+
+                    <inputLayout:SfTextInputLayout
+                            ReserveSpaceForAssistiveLabels="False"
+                            Hint="CI"
+                            ContainerType="Outlined"
+                            OutlineCornerRadius="8"
+                             >
+                        <Entry Keyboard="Telephone" x:Name="telefono" />
+                    </inputLayout:SfTextInputLayout>
+
+                    <inputLayout:SfTextInputLayout
+                            ReserveSpaceForAssistiveLabels="False"
+                            Hint="Dirección"
+                            ContainerType="Outlined"
+                            OutlineCornerRadius="8"
+                             >
+                        <Entry  Keyboard="Telephone" x:Name="direccion"/>
+                    </inputLayout:SfTextInputLayout>
+
+                    <inputLayout:SfTextInputLayout
+                            ReserveSpaceForAssistiveLabels="False"
+                            Hint="Correo Electonico"
+                            ContainerType="Outlined"
+                            OutlineCornerRadius="8"
+                             >
+                        <Entry x:Name="correo"/>
+                    </inputLayout:SfTextInputLayout>
+                    <inputLayout:SfTextInputLayout
+                                ReserveSpaceForAssistiveLabels="False"
+                                Hint="Celular"
+                                ContainerType="Outlined"
+                                OutlineCornerRadius="8"
+                                 >
+                        <Entry x:Name="CodEmp" Keyboard="Telephone"/>
+                    </inputLayout:SfTextInputLayout>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="5*"/>
+                            <ColumnDefinition Width="5*"/>
+                        </Grid.ColumnDefinitions>
+                        <StackLayout Grid.Column="0">
+                            <Label Text="Latitud"/>
+                            <Label x:Name="lat" TextColor="Black"/>
+                        </StackLayout>
+                        <StackLayout Grid.Column="1">
+                            <Label Text="Longitud"/>
+                            <Label x:Name="lng" TextColor="Black"/>
+                        </StackLayout>
+                    </Grid>
+                    <Button x:Name="btn_account" Text="Crea una Cliente" BackgroundColor="#150792" TextColor="White" CornerRadius="5" Margin="0, 5, 0, 20" Clicked="Btn_account_Clicked" />
+
+                </StackLayout>
+
+                <Grid Opacity=".8" 
+                      
+                        BackgroundColor="Black"
+                        Grid.RowSpan="2"
+                        IsVisible="{Binding IsBusy}">
+                    <ActivityIndicator
+                        IsRunning="{Binding IsBusy}"
+                        HorizontalOptions="Center"
+                        >
+
+                    </ActivityIndicator>
+                </Grid>
+
+
+
+
+            </Grid>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
